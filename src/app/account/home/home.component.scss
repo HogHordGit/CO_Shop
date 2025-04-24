@@ -1,0 +1,12 @@
+.container {
+  width: 100%;
+  margin: 0 auto 0 auto;
+  height: 100vh;
+
+  &__text {
+    display: flex;
+    height: inherit;
+    align-items: center;
+    justify-content: center;
+  }
+}
