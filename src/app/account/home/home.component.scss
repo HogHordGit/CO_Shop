@@ -1,12 +1,9 @@
 .container {
   width: 100%;
-  margin: 0 auto 0 auto;
-  height: 100vh;
+  max-width: 1440px;
+  margin: 0 20px 0 20px;
 
   &__text {
-    display: flex;
-    height: inherit;
-    align-items: center;
-    justify-content: center;
+    color: #9c0000;
   }
 }
