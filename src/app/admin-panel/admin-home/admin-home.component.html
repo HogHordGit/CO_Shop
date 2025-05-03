@@ -1,5 +1,32 @@
-<p>admin-home works!</p>
+<div class="wrapper">
+  <div class="grid-container">
+    <header class="header">
+      <div class="header__container">
+        <div class="header__holder">
+          <div class="header__text">
+            SHOP.CO Admin Panel
+          </div>
 
-<router-outlet>
+          <nav class="header__nav nav">
+            <a routerLink="/admin-panel/admins" routerLinkActive="active" class="nav__item">Admins</a>
+            <a href="#" class="nav__item">POST</a>
+            <a href="#" class="nav__item">PUT</a>
+            <a href="#" class="nav__item">DELETE</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="main">
 
-</router-outlet>
+      <router-outlet>
+
+      </router-outlet>
+
+    </main>
+    <footer class="footer">
+      <div class="footer__text">
+        Shop.co © 2025, All Rights Reserved
+      </div>
+    </footer>
+  </div>
+</div>
