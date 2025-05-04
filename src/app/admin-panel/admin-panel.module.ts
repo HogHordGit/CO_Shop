@@ -16,6 +16,7 @@ import {
 import {MatFormField, MatSuffix} from '@angular/material/form-field.d-BJpDa0PI';
 import {MatIcon} from '@angular/material/icon-module.d-BeibE7j0';
 import {MatInput} from '@angular/material/input';
+import {MatPaginator} from '@angular/material/paginator.d-BpWCCOIR';
 
 
 
@@ -37,7 +38,8 @@ import {MatInput} from '@angular/material/input';
     MatRow,
     MatRowDef,
     MatSuffix,
-    MatTable
+    MatTable,
+    MatPaginator
   ]
 })
 export class AdminPanelModule { }

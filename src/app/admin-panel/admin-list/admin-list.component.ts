@@ -7,10 +7,11 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {AdminPanelService} from '../admin-panel.service';
 import {AdminsInterface} from '../admin-panel-interface';
 import {MatSort, MatSortModule} from '@angular/material/sort';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-admin-list',
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule, MatSortModule],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule, MatSortModule, MatPaginatorModule],
   templateUrl: './admin-list.component.html',
   styleUrl: './admin-list.component.scss'
 })
@@ -21,6 +22,7 @@ export class AdminListComponent implements AfterViewInit{
   constructor(private adminPanelService: AdminPanelService) {}
 
   @ViewChild(MatSort) sort: any;
+  @ViewChild(MatPaginator) paginator: any;
 
   admin:AdminsInterface = {
     id: 0,
@@ -37,6 +39,7 @@ export class AdminListComponent implements AfterViewInit{
       this.dataSource = new MatTableDataSource<AdminsInterface>(data);
 
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     })
   }
 
