@@ -15,4 +15,8 @@ export class AdminPanelService {
   fetchAllAdmins():Observable<AdminsInterface[]> {
     return this._httpClient.get<AdminsInterface[]>(`${this.baseURL}`);
   }
+
+  createAdmin(data:AdminsInterface) {
+    return this._httpClient.post<AdminsInterface>(`${this.baseURL}`, data);
+  }
 }

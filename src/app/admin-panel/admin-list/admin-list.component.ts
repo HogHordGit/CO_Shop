@@ -7,11 +7,13 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {AdminPanelService} from '../admin-panel.service';
 import {AdminsInterface} from '../admin-panel-interface';
 import {MatSort, MatSortModule} from '@angular/material/sort';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-admin-list',
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule, MatSortModule, MatPaginatorModule],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule, MatSortModule, MatPaginatorModule, CommonModule, FormsModule],
   templateUrl: './admin-list.component.html',
   styleUrl: './admin-list.component.scss'
 })
@@ -38,15 +40,38 @@ export class AdminListComponent implements AfterViewInit{
       this.admins = data;
       this.dataSource = new MatTableDataSource<AdminsInterface>(data);
 
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }, 100);
     })
   }
 
-  searchAdmin(input:any) {
-    this.filteredAdmins = this.admins.filter(item => item.login.toLowerCase().includes(input.toLowerCase())
-    || item.id.toString().includes(input));
+  searchAdmin(input: any) {
+    this.filteredAdmins = this.admins.filter(item =>
+      item.login.toLowerCase().includes(input.toLowerCase()) ||
+      item.id.toString().includes(input)
+    );
 
     this.dataSource = new MatTableDataSource<AdminsInterface>(this.filteredAdmins);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  PostPutAdmin(admin:AdminsInterface) {
+    if (admin.id !== 0) {
+      //update
+    } else {
+      this.adminPanelService.createAdmin(admin).subscribe({
+        next: (data) => {
+          console.log(`New Admin created Successfully!`);
+          window.location.reload();
+        },
+        error: (err) => {
+          console.log(err);
+          window.location.reload();
+        }
+      })
+    }
   }
 }
