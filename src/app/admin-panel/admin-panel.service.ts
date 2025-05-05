@@ -10,19 +10,19 @@ export class AdminPanelService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  fetchAllAdmins(url: String):Observable<AdminsInterface[]> {
-    return this._httpClient.get<AdminsInterface[]>(`${url}`);
+  fetchAllAdmins(url: String):Observable<any> {
+    return this._httpClient.get<any>(`${url}`);
   }
 
-  createAdmin(data:AdminsInterface, url:String) {
-    return this._httpClient.post<AdminsInterface>(`${url}`, data);
+  createAdmin(data:any, url:String) {
+    return this._httpClient.post<any>(`${url}`, data);
   }
 
-  updateAdmin(data:AdminsInterface, url: String) {
-    return this._httpClient.put<AdminsInterface>(`${url}/${data.id}`, data);
+  updateAdmin(data:any, url: String) {
+    return this._httpClient.put<any>(`${url}/${data.id}`, data);
   }
 
   deleteAdmin(id: Number, url: String) {
-    return this._httpClient.delete<AdminsInterface>(`${url}/${id}`);
+    return this._httpClient.delete<any>(`${url}/${id}`);
   }
 }

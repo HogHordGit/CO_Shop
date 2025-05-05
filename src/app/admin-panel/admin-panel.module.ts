@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {AdminHomeComponent} from './admin-home/admin-home.component';
 import {AdminListComponent} from './admin-list/admin-list.component';
+import {AdminUsersComponent} from './admin-users/admin-users.component';
 import {MatButton} from '@angular/material/button';
 import {
   MatCell,
@@ -13,15 +14,15 @@ import {
   MatHeaderRowDef,
   MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
-import {MatFormField, MatSuffix} from '@angular/material/form-field.d-BJpDa0PI';
-import {MatIcon} from '@angular/material/icon-module.d-BeibE7j0';
+import {MatFormField, MatSuffix} from '@angular/material/form-field';
+import {MatIcon} from '@angular/material/icon';
 import {MatInput} from '@angular/material/input';
-import {MatPaginator} from '@angular/material/paginator.d-BpWCCOIR';
+import {MatPaginator} from '@angular/material/paginator';
 
 
 
 @NgModule({
-  declarations: [AdminHomeComponent, AdminListComponent],
+  declarations: [AdminHomeComponent, AdminListComponent, AdminUsersComponent],
   imports: [
     CommonModule,
     RouterModule,
