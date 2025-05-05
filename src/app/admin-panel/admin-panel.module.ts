@@ -18,11 +18,12 @@ import {MatFormField, MatSuffix} from '@angular/material/form-field';
 import {MatIcon} from '@angular/material/icon';
 import {MatInput} from '@angular/material/input';
 import {MatPaginator} from '@angular/material/paginator';
+import {AdminClothesComponent} from './admin-clothes/admin-clothes.component';
 
 
 
 @NgModule({
-  declarations: [AdminHomeComponent, AdminListComponent, AdminUsersComponent],
+  declarations: [AdminHomeComponent, AdminListComponent, AdminUsersComponent, AdminClothesComponent],
   imports: [
     CommonModule,
     RouterModule,
