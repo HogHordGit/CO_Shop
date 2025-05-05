@@ -19,4 +19,12 @@ export class AdminPanelService {
   createAdmin(data:AdminsInterface) {
     return this._httpClient.post<AdminsInterface>(`${this.baseURL}`, data);
   }
+
+  updateAdmin(data:AdminsInterface) {
+    return this._httpClient.put<AdminsInterface>(`${this.baseURL}/${data.id}`, data);
+  }
+
+  deleteAdmin(id: Number) {
+    return this._httpClient.delete<AdminsInterface>(`${this.baseURL}/${id}`);
+  }
 }

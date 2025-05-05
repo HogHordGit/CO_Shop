@@ -13,12 +13,13 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-admin-list',
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule, MatSortModule, MatPaginatorModule, CommonModule, FormsModule],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule,
+    MatSortModule, MatPaginatorModule, CommonModule, FormsModule],
   templateUrl: './admin-list.component.html',
   styleUrl: './admin-list.component.scss'
 })
 export class AdminListComponent implements AfterViewInit{
-  displayedColumns: string[] = ["id", "login", "password"];
+  displayedColumns: string[] = ["id", "login", "password", "edit", "delete"];
   dataSource = new MatTableDataSource<AdminsInterface>();
 
   constructor(private adminPanelService: AdminPanelService) {}
@@ -60,7 +61,16 @@ export class AdminListComponent implements AfterViewInit{
 
   PostPutAdmin(admin:AdminsInterface) {
     if (admin.id !== 0) {
-      //update
+      this.adminPanelService.updateAdmin(admin).subscribe({
+        next: (data) => {
+          console.log(`Admin updated Successfully!`);
+          window.location.reload();
+        },
+        error: (err) => {
+          console.log(err);
+          window.location.reload();
+        }
+      })
     } else {
       this.adminPanelService.createAdmin(admin).subscribe({
         next: (data) => {
@@ -72,6 +82,24 @@ export class AdminListComponent implements AfterViewInit{
           window.location.reload();
         }
       })
+    }
+  }
+
+  putAdminFormField(admin: AdminsInterface) {
+    this.admin.id = admin.id;
+    this.admin.login = admin.login;
+    this.admin.password = admin.password;
+  }
+
+  deleteAdminFormField(id: Number) {
+    const  isConfirmed = window.confirm("Are you sure you want to DELETE?");
+
+    if (isConfirmed) {
+      this.adminPanelService.deleteAdmin(id).subscribe((data) => {
+        this.admins = this.admins.filter(item => item.id !== id);
+
+        window.location.reload();
+      });
     }
   }
 }
