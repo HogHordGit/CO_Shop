@@ -4,13 +4,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {AdminPanelService} from '../admin-panel.service';
-import {AdminsInterface} from '../admin-panel-interface';
+import {AdminPanelService} from '../../shared/services/admin-panel.service';
+
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {adminPanelListURL} from '../../../../public/RowData/UrlLinks';
+import {adminPanelListURL} from '../../shared/DbLinks/UrlLinks';
+import {AdminsInterface} from '../../shared/types/admin-panel-admins-interface';
 
 @Component({
   selector: 'app-admin-list',
@@ -40,7 +41,7 @@ export class AdminListComponent implements AfterViewInit{
   filteredAdmins:AdminsInterface[] = [];
 
   ngAfterViewInit() {
-    this.adminPanelService.fetchAllAdmins(this.baseAdminListURL).subscribe((data) => {
+    this.adminPanelService.fetchAllData(this.baseAdminListURL).subscribe((data) => {
       this.admins = data;
       this.dataSource = new MatTableDataSource<AdminsInterface>(data);
 
@@ -64,7 +65,7 @@ export class AdminListComponent implements AfterViewInit{
 
   PostPutAdmin(admin:AdminsInterface) {
     if (admin.id !== 0) {
-      this.adminPanelService.updateAdmin(admin, this.baseAdminListURL).subscribe({
+      this.adminPanelService.updateData(admin, this.baseAdminListURL).subscribe({
         next: (data) => {
           console.log(`Admin updated Successfully!`);
           window.location.reload();
@@ -75,7 +76,7 @@ export class AdminListComponent implements AfterViewInit{
         }
       })
     } else {
-      this.adminPanelService.createAdmin(admin, this.baseAdminListURL).subscribe({
+      this.adminPanelService.createData(admin, this.baseAdminListURL).subscribe({
         next: (data) => {
           console.log(`New Admin created Successfully!`);
           window.location.reload();
@@ -98,7 +99,7 @@ export class AdminListComponent implements AfterViewInit{
     const  isConfirmed = window.confirm("Are you sure you want to DELETE?");
 
     if (isConfirmed) {
-      this.adminPanelService.deleteAdmin(id, this.baseAdminListURL).subscribe((data) => {
+      this.adminPanelService.deleteData(id, this.baseAdminListURL).subscribe((data) => {
         this.admins = this.admins.filter(item => item.id !== id);
 
         window.location.reload();

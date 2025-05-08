@@ -8,9 +8,9 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {adminPanelUsersURL} from '../../../../public/RowData/UrlLinks';
-import {AdminPanelService} from '../admin-panel.service';
-import {UsersInterface} from '../admin-panel-interface';
+import {adminPanelUsersURL} from '../../shared/DbLinks/UrlLinks';
+import {AdminPanelService} from '../../shared/services/admin-panel.service';
+import {UsersInterface} from '../../shared/types/admin-panel-users-interface';
 
 @Component({
   selector: 'app-admin-users',
@@ -42,7 +42,7 @@ export class AdminUsersComponent implements AfterViewInit{
   filteredAdmins:UsersInterface[] = [];
 
   ngAfterViewInit() {
-    this.adminPanelService.fetchAllAdmins(this.baseAdminListURL).subscribe((data) => {
+    this.adminPanelService.fetchAllData(this.baseAdminListURL).subscribe((data) => {
       this.users = data;
       this.dataSource = new MatTableDataSource<UsersInterface>(data);
 
@@ -68,7 +68,7 @@ export class AdminUsersComponent implements AfterViewInit{
 
   PostPutAdmin(user:UsersInterface) {
     if (user.id !== 0) {
-      this.adminPanelService.updateAdmin(user, this.baseAdminListURL).subscribe({
+      this.adminPanelService.updateData(user, this.baseAdminListURL).subscribe({
         next: (data) => {
           console.log(`Admin updated Successfully!`);
           window.location.reload();
@@ -79,7 +79,7 @@ export class AdminUsersComponent implements AfterViewInit{
         }
       })
     } else {
-      this.adminPanelService.createAdmin(user, this.baseAdminListURL).subscribe({
+      this.adminPanelService.createData(user, this.baseAdminListURL).subscribe({
         next: (data) => {
           console.log(`New Admin created Successfully!`);
           window.location.reload();
@@ -104,7 +104,7 @@ export class AdminUsersComponent implements AfterViewInit{
     const  isConfirmed = window.confirm("Are you sure you want to DELETE?");
 
     if (isConfirmed) {
-      this.adminPanelService.deleteAdmin(id, this.baseAdminListURL).subscribe((data) => {
+      this.adminPanelService.deleteData(id, this.baseAdminListURL).subscribe((data) => {
         this.users = this.users.filter(item => item.id !== id);
 
         window.location.reload();
