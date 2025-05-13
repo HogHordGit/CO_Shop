@@ -1,0 +1,22 @@
+.nav {
+
+  &__discount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+  }
+  &__discount span {
+    text-decoration: underline;
+  }
+  &__holder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    background-color: #fff;
+  }
+}

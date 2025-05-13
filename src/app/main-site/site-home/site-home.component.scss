@@ -1,0 +1,45 @@
+// common typography
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #000;
+
+  font-size: 16px;
+}
+
+// common classes
+.wrapper {
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.grid-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: 140px 1fr 140px;
+  grid-template-areas: "nav"
+                       "content"
+                       "footer";
+}
+
+.nav {
+  grid-area: nav;
+  background-color: red;
+  height: 100%;
+}
+
+.content {
+  grid-area: content;
+  background-color: blue;
+  height: 100%;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: green;
+  height: 100%;
+}
