@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {SiteFooterComponent} from './site-footer/site-footer.component';
 import {SiteHomeComponent} from './site-home/site-home.component';
 import {RouterModule} from '@angular/router';
@@ -11,7 +11,8 @@ import {SiteContentComponent} from './site-content/site-content.component';
   declarations: [SiteFooterComponent, SiteHomeComponent, SiteNavComponent, SiteContentComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    NgOptimizedImage
   ]
 })
 export class MainSiteModule { }

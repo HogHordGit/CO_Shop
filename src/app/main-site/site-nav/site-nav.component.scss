@@ -1,5 +1,18 @@
-.nav {
+.container {
+  max-width: 1440px;
+  padding: 0 20px;
+}
 
+.nav {
+  &__container {
+    max-width: 1280px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 40px;
+    margin: 0 auto;
+  }
   &__discount {
     display: flex;
     align-items: center;
@@ -13,10 +26,32 @@
     text-decoration: underline;
   }
   &__holder {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     height: 100px;
     background-color: #fff;
+  }
+  &__icon-text {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  &__nav-img {
+    display: flex;
+    gap: 14px;
+  }
+  &__search-bar {
+    width: 570px;
+    height: 45px;
+    border-radius: 62px;
+    border: 0;
+    background-color: #e3e3e3;
+  }
+}
+
+.nav-list {
+  display: flex;
+  gap: 24px;
+
+  &__item {
+    text-decoration: none;
+    color: #000;
   }
 }
