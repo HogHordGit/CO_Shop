@@ -1,5 +1,5 @@
 .container {
-  max-width: 1440px;
+  max-width: 1280px;
   padding: 0 20px;
 }
 
@@ -10,8 +10,8 @@
     display: flex;
     align-items: center;
     height: 100%;
-    gap: 40px;
     margin: 0 auto;
+    justify-content: space-between;
   }
   &__discount {
     display: flex;

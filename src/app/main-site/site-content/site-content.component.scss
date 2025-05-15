@@ -1,0 +1,51 @@
+.header {
+  width: 100%;
+  height: calc(100vh - 140px);
+  background-image: url("../../../../public/img/bg_header.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  &__container {
+    max-width: 1280px;
+    padding: 0 20px;
+    margin: 0 auto;
+  }
+  &__holder {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    height: calc(100vh - 140px);
+    justify-content: center;
+  }
+  &__title {
+    font-size: 64px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  &__sub-title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+  &__button {
+    color: #fff;
+    background-color: #000;
+    padding: 15px 60px;
+    cursor: pointer;
+    border-radius: 62px;
+    border: none;
+    margin-bottom: 30px;
+  }
+  &__num-holder {
+    display: flex;
+    gap: 32px;
+  }
+}
+
+.brands, .products, .customers {
+  &__num {
+    font-size: 40px;
+    font-weight: 700;
+  }
+}
