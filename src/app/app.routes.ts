@@ -5,6 +5,7 @@ import {AdminUsersComponent} from './admin-panel/admin-users/admin-users.compone
 import {AdminClothesComponent} from './admin-panel/admin-clothes/admin-clothes.component';
 import {SiteHomeComponent} from './main-site/site-home/site-home.component';
 import {SiteContentComponent} from './main-site/site-content/site-content.component';
+import {AdminLoginComponent} from './admin-panel/admin-login/admin-login.component';
 
 export const routes: Routes = [
   { path: "home", redirectTo: "home/main-site", pathMatch: "full"},
@@ -15,7 +16,8 @@ export const routes: Routes = [
     children: [
       { path: 'admins', component: AdminListComponent },
       { path: 'users', component: AdminUsersComponent },
-      { path: 'clothes', component: AdminClothesComponent }
+      { path: 'clothes', component: AdminClothesComponent },
+      { path: 'login', component: AdminLoginComponent }
     ]
   },
   {

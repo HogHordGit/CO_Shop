@@ -1,0 +1,18 @@
+<div class="login__holder">
+  <div class="login__block login-block">
+
+    <div class="login-block__title">Login</div>
+
+    <form class="login-block__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="login-block__email-input">
+        <input class="login-block__input" type="text" placeholder="Email" formControlName="email">
+      </div>
+      <div class="login-block__password-input">
+        <input class="login-block__input" type="password" placeholder="Password" formControlName="password">
+      </div>
+      <div class="login-block__login-btn">
+        <button class="login-block__btn" type="submit">Sign In</button>
+      </div>
+    </form>
+  </div>
+</div>
