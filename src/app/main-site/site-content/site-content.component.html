@@ -47,7 +47,7 @@
 
       <div class="new-arrivals__holder">
 
-        <div *ngFor="let item of filteredNewClothes" class="new-arrivals__item arrivals-item">
+        <div *ngFor="let item of visibleNewClothes" class="new-arrivals__item arrivals-item">
           <div class="arrivals-item__block">
             <img class="arrivals-item__img" src="{{item.img}}" alt="item">
           </div>
@@ -81,58 +81,16 @@
 
       <div class="new-arrivals__holder">
 
-        <div class="new-arrivals__item arrivals-item">
+        <div *ngFor="let item of visibleTopClothes" class="new-arrivals__item arrivals-item">
           <div class="arrivals-item__block">
-            <img class="arrivals-item__img" src="/img/t-shirt.svg" alt="item">
+            <img class="arrivals-item__img" src="{{item.img}}" alt="item">
           </div>
           <div class="arrivals-item__under-block">
             <div class="arrivals-item__title">
-              T-shirt with Tape Details
+              {{item.name}}
             </div>
             <div class="arrivals-item__prise">
-              $120
-            </div>
-          </div>
-        </div>
-
-        <div class="new-arrivals__item arrivals-item">
-          <div class="arrivals-item__block">
-            <img class="arrivals-item__img" src="/img/t-shirt.svg" alt="item">
-          </div>
-          <div class="arrivals-item__under-block">
-            <div class="arrivals-item__title">
-              T-shirt with Tape Details
-            </div>
-            <div class="arrivals-item__prise">
-              $120
-            </div>
-          </div>
-        </div>
-
-        <div class="new-arrivals__item arrivals-item">
-          <div class="arrivals-item__block">
-            <img class="arrivals-item__img" src="/img/t-shirt.svg" alt="item">
-          </div>
-          <div class="arrivals-item__under-block">
-            <div class="arrivals-item__title">
-              T-shirt with Tape Details
-            </div>
-            <div class="arrivals-item__prise">
-              $120
-            </div>
-          </div>
-        </div>
-
-        <div class="new-arrivals__item arrivals-item">
-          <div class="arrivals-item__block">
-            <img class="arrivals-item__img" src="/img/t-shirt.svg" alt="item">
-          </div>
-          <div class="arrivals-item__under-block">
-            <div class="arrivals-item__title">
-              T-shirt with Tape Details
-            </div>
-            <div class="arrivals-item__prise">
-              $120
+              ${{item.prise}}
             </div>
           </div>
         </div>

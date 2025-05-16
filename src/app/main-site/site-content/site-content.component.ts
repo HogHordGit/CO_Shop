@@ -18,6 +18,10 @@ export class SiteContentComponent implements AfterViewInit{
 
   clothes:ClothesInterface[] = [];
   filteredNewClothes:ClothesInterface[] = [];
+  filteredTopClothes:ClothesInterface[] = [];
+
+  visibleNewClothes:ClothesInterface[] = [];
+  visibleTopClothes:ClothesInterface[] = [];
 
   ngAfterViewInit() {
     this.adminPanelService.fetchAllData(this.baseAdminListURL).subscribe((data) => {
@@ -25,5 +29,9 @@ export class SiteContentComponent implements AfterViewInit{
     })
 
     this.filteredNewClothes = this.clothes.filter(item => item.rating == "new");
+    this.filteredTopClothes = this.clothes.filter(item => item.rating == "top");
+
+    this.visibleNewClothes = this.filteredNewClothes.slice(0, 4);
+    this.visibleTopClothes = this.filteredTopClothes.slice(0, 4);
   }
 }
