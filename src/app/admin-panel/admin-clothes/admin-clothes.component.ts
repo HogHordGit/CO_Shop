@@ -18,6 +18,7 @@ import {ClothesInterface} from '../../shared/types/admin-panel-clothes-interface
   imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule,
     MatSortModule, MatPaginatorModule, CommonModule, FormsModule],
   templateUrl: './admin-clothes.component.html',
+  standalone: true,
   styleUrl: './admin-clothes.component.scss'
 })
 export class AdminClothesComponent implements AfterViewInit{

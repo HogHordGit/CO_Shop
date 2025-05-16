@@ -7,6 +7,7 @@ import {SiteNavComponent} from '../site-nav/site-nav.component';
   selector: 'app-site-home',
   imports: [RouterOutlet, SiteFooterComponent, SiteNavComponent],
   templateUrl: './site-home.component.html',
+  standalone: true,
   styleUrl: './site-home.component.scss'
 })
 export class SiteHomeComponent {

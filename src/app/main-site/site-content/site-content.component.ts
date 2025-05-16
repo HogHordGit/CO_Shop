@@ -8,6 +8,7 @@ import {CommonModule} from '@angular/common';
   selector: 'app-site-content',
   imports: [CommonModule],
   templateUrl: './site-content.component.html',
+  standalone: true,
   styleUrl: './site-content.component.scss'
 })
 export class SiteContentComponent implements AfterViewInit{

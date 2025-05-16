@@ -18,6 +18,7 @@ import {UsersInterface} from '../../shared/types/admin-panel-users-interface';
   imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule,
     MatSortModule, MatPaginatorModule, CommonModule, FormsModule],
   templateUrl: './admin-users.component.html',
+  standalone: true,
   styleUrl: './admin-users.component.scss'
 })
 export class AdminUsersComponent implements AfterViewInit{

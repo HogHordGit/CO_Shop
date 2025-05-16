@@ -18,6 +18,7 @@ import {AdminsInterface} from '../../shared/types/admin-panel-admins-interface';
   imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule,
     MatSortModule, MatPaginatorModule, CommonModule, FormsModule],
   templateUrl: './admin-list.component.html',
+  standalone: true,
   styleUrl: './admin-list.component.scss'
 })
 export class AdminListComponent implements AfterViewInit{
