@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Component, inject} from '@angular/core';
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-admin-home',
@@ -10,4 +10,11 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 })
 export class AdminHomeComponent {
 
+  router = inject(Router);
+
+  logOut(): void{
+    console.log("logOut");
+    localStorage.setItem("token", "");
+    this.router.navigateByUrl("/admin-panel/login");
+  }
 }

@@ -41,7 +41,8 @@ body {
   &__text {
     color: #ffffff;
     font-size: 20px;
-    margin-right: 50px;
+    width: 240px;
+    margin-right: 40px;
   }
 
   &__holder {
@@ -53,12 +54,22 @@ body {
 }
 
 .nav {
-
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 
   &__item {
     color: #ffffff;
     text-decoration: none;
     margin-left: 20px;
+  }
+  &__item-logout {
+    cursor: pointer;
+    background-color: #000;
+    font-size: 16px;
+    border: none;
+    color: #ffffff;
+    text-decoration: none;
   }
 }
 

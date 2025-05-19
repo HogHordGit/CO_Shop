@@ -8,9 +8,15 @@
           </div>
 
           <nav class="header__nav nav">
-            <a routerLink="/admin-panel/admins" routerLinkActive="active" class="nav__item">Admins</a>
-            <a routerLink="/admin-panel/users" routerLinkActive="active" href="#" class="nav__item">Users</a>
-            <a routerLink="/admin-panel/clothes" routerLinkActive="active" class="nav__item">Clothes</a>
+            <div class="nav__link-block">
+              <a routerLink="/admin-panel/admins" routerLinkActive="active" class="nav__item">Admins</a>
+              <a routerLink="/admin-panel/users" routerLinkActive="active" href="#" class="nav__item">Users</a>
+              <a routerLink="/admin-panel/clothes" routerLinkActive="active" class="nav__item">Clothes</a>
+            </div>
+
+            <div class="nav__logout-block">
+              <button class="nav__item-logout" (click)="logOut()">LogOut</button>
+            </div>
           </nav>
         </div>
       </div>
