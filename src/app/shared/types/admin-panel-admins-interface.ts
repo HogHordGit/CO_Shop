@@ -1,5 +1,6 @@
 export interface AdminsInterface {
   id:Number,
   login:String,
-  password:String
+  password:String,
+  token: String
 }

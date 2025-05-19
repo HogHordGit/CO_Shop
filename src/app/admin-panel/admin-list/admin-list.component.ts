@@ -35,7 +35,8 @@ export class AdminListComponent implements AfterViewInit{
   admin:AdminsInterface = {
     id: 0,
     login: "",
-    password: ""
+    password: "",
+    token: ""
   }
 
   admins:AdminsInterface[] = [];
