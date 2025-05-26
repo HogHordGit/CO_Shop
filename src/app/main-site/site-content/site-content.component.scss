@@ -119,6 +119,12 @@
 }
 
 .arrivals-item {
+  position: relative;
+
+  &__hover {
+    position: absolute;
+    padding: 187px 147px;
+  }
   &__block {
     width: 295px;
     height: 298px;

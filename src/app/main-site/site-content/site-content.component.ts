@@ -3,10 +3,11 @@ import {AdminPanelService} from '../../shared/services/admin-panel.service';
 import {adminPanelClothesURL} from '../../shared/DbLinks/UrlLinks';
 import {ClothesInterface} from '../../shared/types/admin-panel-clothes.interface';
 import {CommonModule} from '@angular/common';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'app-site-content',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './site-content.component.html',
   standalone: true,
   styleUrl: './site-content.component.scss'

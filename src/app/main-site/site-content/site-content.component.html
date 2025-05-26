@@ -48,6 +48,7 @@
       <div class="new-arrivals__holder">
 
         <div *ngFor="let item of visibleNewClothes" class="new-arrivals__item arrivals-item">
+          <a routerLink="/home/detail/{{item.id}}" routerLinkActive="active" class="arrivals-item__hover"></a>
           <div class="arrivals-item__block">
             <img class="arrivals-item__img" src="{{item.img}}" alt="item">
           </div>

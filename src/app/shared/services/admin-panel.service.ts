@@ -13,6 +13,10 @@ export class AdminPanelService {
     return this._httpClient.get<any>(`${url}`);
   }
 
+  fetchParticularData(id: Number, url: String):Observable<any> {
+    return this._httpClient.get<any>(`${url}/${id}`);
+  }
+
   createData(data:any, url:String) {
     return this._httpClient.post<any>(`${url}`, data);
   }
