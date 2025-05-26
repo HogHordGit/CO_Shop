@@ -11,7 +11,7 @@ import {FormsModule} from '@angular/forms';
 
 import {adminPanelUsersURL} from '../../shared/DbLinks/UrlLinks';
 import {AdminPanelService} from '../../shared/services/admin-panel.service';
-import {UsersInterface} from '../../shared/types/admin-panel-users-interface';
+import {UsersInterface} from '../../shared/types/admin-panel-users.interface';
 
 @Component({
   selector: 'app-admin-users',
@@ -44,14 +44,18 @@ export class AdminUsersComponent implements AfterViewInit{
   filteredAdmins:UsersInterface[] = [];
 
   ngAfterViewInit() {
+    this.getUsers();
+
+    setTimeout(() => {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }, 100);
+  }
+
+  getUsers() {
     this.adminPanelService.fetchAllData(this.baseAdminListURL).subscribe((data) => {
       this.users = data;
       this.dataSource = new MatTableDataSource<UsersInterface>(data);
-
-      setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      }, 100);
     })
   }
 
@@ -73,22 +77,22 @@ export class AdminUsersComponent implements AfterViewInit{
       this.adminPanelService.updateData(user, this.baseAdminListURL).subscribe({
         next: (data) => {
           console.log(`Admin updated Successfully!`);
-          window.location.reload();
+          this.getUsers();
         },
         error: (err) => {
           console.log(err);
-          window.location.reload();
+          this.getUsers();
         }
       })
     } else {
       this.adminPanelService.createData(user, this.baseAdminListURL).subscribe({
         next: (data) => {
           console.log(`New Admin created Successfully!`);
-          window.location.reload();
+          this.getUsers();
         },
         error: (err) => {
           console.log(err);
-          window.location.reload();
+          this.getUsers();
         }
       })
     }
@@ -109,7 +113,7 @@ export class AdminUsersComponent implements AfterViewInit{
       this.adminPanelService.deleteData(id, this.baseAdminListURL).subscribe((data) => {
         this.users = this.users.filter(item => item.id !== id);
 
-        window.location.reload();
+        this.getUsers();
       });
     }
   }

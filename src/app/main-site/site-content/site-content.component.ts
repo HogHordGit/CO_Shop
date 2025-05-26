@@ -1,7 +1,7 @@
 import {AfterViewInit, Component} from '@angular/core';
 import {AdminPanelService} from '../../shared/services/admin-panel.service';
 import {adminPanelClothesURL} from '../../shared/DbLinks/UrlLinks';
-import {ClothesInterface} from '../../shared/types/admin-panel-clothes-interface';
+import {ClothesInterface} from '../../shared/types/admin-panel-clothes.interface';
 import {CommonModule} from '@angular/common';
 
 @Component({

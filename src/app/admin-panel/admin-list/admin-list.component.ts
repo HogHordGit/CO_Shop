@@ -11,7 +11,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {adminPanelListURL} from '../../shared/DbLinks/UrlLinks';
-import {AdminsInterface} from '../../shared/types/admin-panel-admins-interface';
+import {AdminsInterface} from '../../shared/types/admin-panel-admins.interface';
 
 @Component({
   selector: 'app-admin-list',
@@ -43,14 +43,18 @@ export class AdminListComponent implements AfterViewInit{
   filteredAdmins:AdminsInterface[] = [];
 
   ngAfterViewInit() {
+    this.getAdmins();
+
+    setTimeout(() => {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }, 100);
+  }
+
+  getAdmins() {
     this.adminPanelService.fetchAllData(this.baseAdminListURL).subscribe((data) => {
       this.admins = data;
       this.dataSource = new MatTableDataSource<AdminsInterface>(data);
-
-      setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      }, 100);
     })
   }
 
@@ -70,22 +74,22 @@ export class AdminListComponent implements AfterViewInit{
       this.adminPanelService.updateData(admin, this.baseAdminListURL).subscribe({
         next: (data) => {
           console.log(`Admin updated Successfully!`);
-          window.location.reload();
+          this.getAdmins();
         },
         error: (err) => {
           console.log(err);
-          window.location.reload();
+          this.getAdmins();
         }
       })
     } else {
       this.adminPanelService.createData(admin, this.baseAdminListURL).subscribe({
         next: (data) => {
           console.log(`New Admin created Successfully!`);
-          window.location.reload();
+          this.getAdmins();
         },
         error: (err) => {
           console.log(err);
-          window.location.reload();
+          this.getAdmins();
         }
       })
     }
@@ -104,7 +108,7 @@ export class AdminListComponent implements AfterViewInit{
       this.adminPanelService.deleteData(id, this.baseAdminListURL).subscribe((data) => {
         this.admins = this.admins.filter(item => item.id !== id);
 
-        window.location.reload();
+        this.getAdmins();
       });
     }
   }

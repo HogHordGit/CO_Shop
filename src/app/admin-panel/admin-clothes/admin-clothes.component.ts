@@ -11,7 +11,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {adminPanelClothesURL} from '../../shared/DbLinks/UrlLinks';
-import {ClothesInterface} from '../../shared/types/admin-panel-clothes-interface';
+import {ClothesInterface} from '../../shared/types/admin-panel-clothes.interface';
 
 @Component({
   selector: 'app-admin-clothes',
@@ -49,14 +49,18 @@ export class AdminClothesComponent implements AfterViewInit{
   filteredClothes:ClothesInterface[] = [];
 
   ngAfterViewInit() {
+    this.getClothes();
+
+    setTimeout(() => {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }, 100);
+  }
+
+  getClothes() {
     this.adminPanelService.fetchAllData(this.baseAdminClothesURL).subscribe((data) => {
       this.clothes = data;
       this.dataSource = new MatTableDataSource<ClothesInterface>(data);
-
-      setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      }, 100);
     })
   }
 
@@ -79,22 +83,22 @@ export class AdminClothesComponent implements AfterViewInit{
       this.adminPanelService.updateData(cloth, this.baseAdminClothesURL).subscribe({
         next: (data) => {
           console.log(`Admin updated Successfully!`);
-          window.location.reload();
+          this.getClothes();
         },
         error: (err) => {
           console.log(err);
-          window.location.reload();
+          this.getClothes();
         }
       })
     } else {
       this.adminPanelService.createData(cloth, this.baseAdminClothesURL).subscribe({
         next: (data) => {
           console.log(`New Admin created Successfully!`);
-          window.location.reload();
+          this.getClothes();
         },
         error: (err) => {
           console.log(err);
-          window.location.reload();
+          this.getClothes();
         }
       })
     }
@@ -120,7 +124,7 @@ export class AdminClothesComponent implements AfterViewInit{
       this.adminPanelService.deleteData(id, this.baseAdminClothesURL).subscribe((data) => {
         this.clothes = this.clothes.filter(item => item.id !== id);
 
-        window.location.reload();
+        this.getClothes();
       });
     }
   }

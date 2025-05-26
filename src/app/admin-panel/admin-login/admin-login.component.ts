@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AuthService} from '../../shared/services/auth.service';
 import {Router} from '@angular/router';
-import {AdminsInterface} from '../../shared/types/admin-panel-admins-interface';
+import {AdminsInterface} from '../../shared/types/admin-panel-admins.interface';
 import {AdminPanelService} from '../../shared/services/admin-panel.service';
 import {adminPanelLoginURL} from '../../shared/DbLinks/UrlLinks';
 
