@@ -1,1 +1,40 @@
-<p>site-detail works!</p>
+<div class="detail-container">
+  <div class="detail__holder">
+    <div class="detail__item detail-item">
+
+      <div *ngFor="let item of clothItem" class="detail-item__item-holder">
+        <div class="detail-item__image">
+          <img src="{{item.img}}" alt="" class="detail-item__img">
+        </div>
+        <div class="detail-item__content">
+
+          <div class="detail-item__title">{{item.name}}</div>
+          <div class="detail-item__prise">${{item.prise}}</div>
+          <div class="detail-item__description">{{item.description}}</div>
+
+          <div class="detail-item__line"></div>
+
+          <div class="detail-item__colors-block">
+            <div class="detail-item__colors-title">Select colors</div>
+
+            <div class="detail-item__colors">{{item.color}}
+            </div>
+          </div>
+
+          <div class="detail-item__size-bloc">
+            <div class="detail-item__size-title">Choose size</div>
+
+            <div class="detail-item__size">
+              {{item.size}}
+            </div>
+          </div>
+
+          <button class="detail-item__button">Add to Cart</button>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
