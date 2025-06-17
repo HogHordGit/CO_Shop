@@ -44,4 +44,42 @@
     max-width: 590px;
     height: 1px;
   }
+  &__colors-title {
+    font-weight: 400;
+    color: #aeaeae;
+  }
+  &__colors {
+    width: 37px;
+    height: 37px;
+    border-radius: 50px;
+    margin-top: 10px;
+  }
+  &__size-block {
+    margin-top: 15px;
+  }
+  &__size-title {
+    font-weight: 400;
+    color: #aeaeae;
+  }
+  &__size {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 40px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  &__button {
+    border: none;
+    background-color: #000;
+    color: #fff;
+    width: 200px;
+    height: 40px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
 }

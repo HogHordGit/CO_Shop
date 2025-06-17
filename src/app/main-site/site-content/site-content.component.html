@@ -56,8 +56,13 @@
             <div class="arrivals-item__title">
               {{item.name}}
             </div>
-            <div class="arrivals-item__prise">
+            <div *ngIf="!item.discount" class="arrivals-item__prise">
               ${{item.prise}}
+            </div>
+            <div *ngIf="item.discount" class="arrivals-item__prise-holder">
+              <div class="arrivals-item__prise-dis">40</div>
+              <div class="arrivals-item__prise-old">{{item.prise}}</div>
+              <div class="arrivals-item__discount">{{item.discount}}</div>
             </div>
           </div>
         </div>
@@ -65,7 +70,7 @@
       </div>
 
       <div class="new-arrivals__btn">
-        <button class="new-arrivals__button">View All</button>
+        <button class="new-arrivals__button" (click)="btnEventNew()">{{flagAllNewGoods ? "View Less" : "View All"}}</button>
       </div>
 
     </div>
@@ -83,6 +88,7 @@
       <div class="new-arrivals__holder">
 
         <div *ngFor="let item of visibleTopClothes" class="new-arrivals__item arrivals-item">
+          <a routerLink="/home/detail/{{item.id}}" routerLinkActive="active" class="arrivals-item__hover"></a>
           <div class="arrivals-item__block">
             <img class="arrivals-item__img" src="{{item.img}}" alt="item">
           </div>
@@ -99,7 +105,7 @@
       </div>
 
       <div class="new-arrivals__btn">
-        <button class="new-arrivals__button">View All</button>
+        <button class="new-arrivals__button" (click)="btnEventTop()">{{flagAllTopGoods ? "View Less" : "View All"}}</button>
       </div>
 
     </div>
